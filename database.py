@@ -6,7 +6,23 @@ def CommitAndClose():
     db.close()
 
 
+def Add():
+    print(" Add new number ".center(25, "-"))
+    name = input("Enter your name: ").capitalize()
+    number = input("Enter your number: ")
 
+    cr.execute(
+        f"SELECT * FROM contact WHERE name = '{name}' AND ID = {user_id} OR number = '{number}' AND ID = {user_id}")
+    row = cr.fetchone()
+    if row == None:
+        cr.execute(
+            f"INSERT INTO contact(name, number, ID) VALUES('{name}', '{number}', {user_id})")
+        print("Added successfully")
+    else:
+        if row[0] == name:
+            print("Sorry this name is already exist")
+        else:
+            print("Sorry this number is already exist")
 
 
 def Delete():
