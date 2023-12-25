@@ -1,6 +1,6 @@
 import sqlite3
 
-
+# borhom
 def CommitAndClose():
     db.commit()
     db.close()
